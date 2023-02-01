@@ -1,0 +1,24 @@
+indentation: 2
+opt_in_rules:
+- force_unwrapping
+- closure_spacing
+- unneeded_parentheses_in_closure_argument
+- vertical_whitespace_closing_braces
+
+disabled_rules:
+- multiple_closures_with_trailing_closure
+
+included:
+- PKDB
+
+excluded:
+- PKDB/API.swift
+
+identifier_name:
+  excluded:
+    - id
+
+large_tuple:
+  warning: 5
+  error: 6
+
