@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B225EE9298B3304007EE635 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B225EE8298B3304007EE635 /* Launch Screen.storyboard */; };
+		4B225EEC298B3FD8007EE635 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EEB298B3FD8007EE635 /* Root.swift */; };
+		4B225EEE298B406C007EE635 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EED298B406C007EE635 /* RootView.swift */; };
 		4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F0929602D2500C8093A /* InstantInformationApp.swift */; };
-		4BA77F0C29602D2500C8093A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F0B29602D2500C8093A /* ContentView.swift */; };
 		4BA77F0E29602D2600C8093A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA77F0D29602D2600C8093A /* Assets.xcassets */; };
 		4BA77F1229602D2600C8093A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA77F1129602D2600C8093A /* Preview Assets.xcassets */; };
 		4BA77F1C29602D2600C8093A /* InstantInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F1B29602D2600C8093A /* InstantInformationTests.swift */; };
@@ -35,9 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4BA77F0629602D2500C8093A /* InstantInformation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantInformation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4B225EE8298B3304007EE635 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		4B225EEB298B3FD8007EE635 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		4B225EED298B406C007EE635 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		4BA77F0629602D2500C8093A /* Instant Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA77F0929602D2500C8093A /* InstantInformationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantInformationApp.swift; sourceTree = "<group>"; };
-		4BA77F0B29602D2500C8093A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4BA77F0D29602D2600C8093A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4BA77F0F29602D2600C8093A /* InstantInformation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstantInformation.entitlements; sourceTree = "<group>"; };
 		4BA77F1129602D2600C8093A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -74,6 +78,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B225EEA298B3DDA007EE635 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4B225EEB298B3FD8007EE635 /* Root.swift */,
+				4B225EED298B406C007EE635 /* RootView.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
 		4BA77EFD29602D2500C8093A = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +100,7 @@
 		4BA77F0729602D2500C8093A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4BA77F0629602D2500C8093A /* InstantInformation.app */,
+				4BA77F0629602D2500C8093A /* Instant Info.app */,
 				4BA77F1729602D2600C8093A /* InstantInformationTests.xctest */,
 				4BA77F2129602D2600C8093A /* InstantInformationUITests.xctest */,
 			);
@@ -98,9 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				4BA77F0929602D2500C8093A /* InstantInformationApp.swift */,
-				4BA77F0B29602D2500C8093A /* ContentView.swift */,
 				4BA77F0D29602D2600C8093A /* Assets.xcassets */,
 				4BA77F0F29602D2600C8093A /* InstantInformation.entitlements */,
+				4B225EE8298B3304007EE635 /* Launch Screen.storyboard */,
+				4B225EEA298B3DDA007EE635 /* Source */,
 				4BA77F1029602D2600C8093A /* Preview Content */,
 			);
 			path = InstantInformation;
@@ -134,9 +148,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4BA77F0529602D2500C8093A /* InstantInformation */ = {
+		4BA77F0529602D2500C8093A /* Instant Info */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4BA77F2B29602D2600C8093A /* Build configuration list for PBXNativeTarget "InstantInformation" */;
+			buildConfigurationList = 4BA77F2B29602D2600C8093A /* Build configuration list for PBXNativeTarget "Instant Info" */;
 			buildPhases = (
 				4BA77F0229602D2500C8093A /* Sources */,
 				4BA77F0329602D2500C8093A /* Frameworks */,
@@ -147,12 +161,12 @@
 			dependencies = (
 				4BEBE404298B2D3C0098E600 /* PBXTargetDependency */,
 			);
-			name = InstantInformation;
+			name = "Instant Info";
 			packageProductDependencies = (
 				4BC040D1298B2ABF00994366 /* ComposableArchitecture */,
 			);
 			productName = InstantInformation;
-			productReference = 4BA77F0629602D2500C8093A /* InstantInformation.app */;
+			productReference = 4BA77F0629602D2500C8093A /* Instant Info.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4BA77F1629602D2600C8093A /* InstantInformationTests */ = {
@@ -231,7 +245,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4BA77F0529602D2500C8093A /* InstantInformation */,
+				4BA77F0529602D2500C8093A /* Instant Info */,
 				4BA77F1629602D2600C8093A /* InstantInformationTests */,
 				4BA77F2029602D2600C8093A /* InstantInformationUITests */,
 			);
@@ -243,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B225EE9298B3304007EE635 /* Launch Screen.storyboard in Resources */,
 				4BA77F1229602D2600C8093A /* Preview Assets.xcassets in Resources */,
 				4BA77F0E29602D2600C8093A /* Assets.xcassets in Resources */,
 			);
@@ -269,8 +284,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA77F0C29602D2500C8093A /* ContentView.swift in Sources */,
 				4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */,
+				4B225EEC298B3FD8007EE635 /* Root.swift in Sources */,
+				4B225EEE298B406C007EE635 /* RootView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +312,12 @@
 /* Begin PBXTargetDependency section */
 		4BA77F1929602D2600C8093A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4BA77F0529602D2500C8093A /* InstantInformation */;
+			target = 4BA77F0529602D2500C8093A /* Instant Info */;
 			targetProxy = 4BA77F1829602D2600C8093A /* PBXContainerItemProxy */;
 		};
 		4BA77F2329602D2600C8093A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 4BA77F0529602D2500C8093A /* InstantInformation */;
+			target = 4BA77F0529602D2500C8093A /* Instant Info */;
 			targetProxy = 4BA77F2229602D2600C8093A /* PBXContainerItemProxy */;
 		};
 		4BEBE404298B2D3C0098E600 /* PBXTargetDependency */ = {
@@ -437,8 +453,10 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -451,10 +469,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brick.InstantInformation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -475,8 +495,10 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -489,10 +511,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.brick.InstantInformation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -598,7 +622,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4BA77F2B29602D2600C8093A /* Build configuration list for PBXNativeTarget "InstantInformation" */ = {
+		4BA77F2B29602D2600C8093A /* Build configuration list for PBXNativeTarget "Instant Info" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4BA77F2C29602D2600C8093A /* Debug */,
@@ -633,7 +657,7 @@
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.0;
+				minimumVersion = 0.50.0;
 			};
 		};
 		4BEBE402298B2D2E0098E600 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {

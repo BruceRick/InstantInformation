@@ -5,13 +5,19 @@
 //  Created by Bruce Rick on 2022-12-31.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 @main
 struct InstantInformationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(
+              store: Store(
+                initialState: Root.State(),
+                reducer: Root()
+              )
+            )
         }
     }
 }
