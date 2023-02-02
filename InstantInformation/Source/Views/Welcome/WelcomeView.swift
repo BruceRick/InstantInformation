@@ -56,7 +56,7 @@ private extension WelcomeView.Content {
 			.resizable()
 			.aspectRatio(contentMode: .fit)
 			.frame(width: 150, height: 150)
-			.padding(.top, 100)
+			.padding(.top, 20)
 			.padding(.bottom, 20)
 			.transition(.opacity)
 			.zIndex(100)
@@ -90,7 +90,7 @@ private extension WelcomeView.Content {
 
 	var loginButton: some View {
 		Button {
-			store.send(.didTapLogin)
+            store.send(.didTapLogin, animation: .linear)
 		} label: {
 			ZStack {
 				Text("Continue To Login")
@@ -113,11 +113,11 @@ private extension WelcomeView.Content {
 
 	var createAccountButton: some View {
 		Button {
-			store.send(.didTapCreateAccount)
+            store.send(.didTapCreateAccount, animation: .linear)
 		} label: {
 			Text("Create Account")
 				.fontWeight(.bold)
-				.frame(alignment: .center)
+                .frame(maxWidth: .infinity, alignment: .center)
 		}
 		.padding()
 		.frame(maxWidth: .infinity)

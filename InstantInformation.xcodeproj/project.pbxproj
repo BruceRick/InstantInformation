@@ -19,6 +19,10 @@
 		4BA77F1C29602D2600C8093A /* InstantInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F1B29602D2600C8093A /* InstantInformationTests.swift */; };
 		4BA77F2629602D2600C8093A /* InstantInformationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F2529602D2600C8093A /* InstantInformationUITests.swift */; };
 		4BA77F2829602D2600C8093A /* InstantInformationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F2729602D2600C8093A /* InstantInformationUITestsLaunchTests.swift */; };
+		4BBF923F298C0C5100F31472 /* CreateAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF923E298C0C5100F31472 /* CreateAccountView.swift */; };
+		4BBF9241298C0CAA00F31472 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9240298C0CAA00F31472 /* CreateAccount.swift */; };
+		4BBF9243298C129C00F31472 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9242298C129C00F31472 /* TextInput.swift */; };
+		4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9246298C261500F31472 /* ViewSynchronize.swift */; };
 		4BC040D2298B2ABF00994366 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC040D1298B2ABF00994366 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +60,10 @@
 		4BA77F2129602D2600C8093A /* InstantInformationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstantInformationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA77F2529602D2600C8093A /* InstantInformationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantInformationUITests.swift; sourceTree = "<group>"; };
 		4BA77F2729602D2600C8093A /* InstantInformationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantInformationUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4BBF923E298C0C5100F31472 /* CreateAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountView.swift; sourceTree = "<group>"; };
+		4BBF9240298C0CAA00F31472 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
+		4BBF9242298C129C00F31472 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
+		4BBF9246298C261500F31472 /* ViewSynchronize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSynchronize.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				4B225EF0298B44EA007EE635 /* Views */,
+				4BBF9245298C25E700F31472 /* Logic */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -99,7 +108,7 @@
 				4B225EED298B406C007EE635 /* RootView.swift */,
 				4B225EF2298B4508007EE635 /* Welcome */,
 				4B225EF1298B44FD007EE635 /* Login */,
-				4B225EFC298B56CF007EE635 /* Signup */,
+				4B225EFC298B56CF007EE635 /* Create Account */,
 				4B225EF3298B4516007EE635 /* Main */,
 			);
 			path = Views;
@@ -126,15 +135,18 @@
 		4B225EF3298B4516007EE635 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				4BBF9244298C1D7700F31472 /* TextInput */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		4B225EFC298B56CF007EE635 /* Signup */ = {
+		4B225EFC298B56CF007EE635 /* Create Account */ = {
 			isa = PBXGroup;
 			children = (
+				4BBF9240298C0CAA00F31472 /* CreateAccount.swift */,
+				4BBF923E298C0C5100F31472 /* CreateAccountView.swift */,
 			);
-			path = Signup;
+			path = "Create Account";
 			sourceTree = "<group>";
 		};
 		4BA77EFD29602D2500C8093A = {
@@ -192,6 +204,22 @@
 				4BA77F2729602D2600C8093A /* InstantInformationUITestsLaunchTests.swift */,
 			);
 			path = InstantInformationUITests;
+			sourceTree = "<group>";
+		};
+		4BBF9244298C1D7700F31472 /* TextInput */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9242298C129C00F31472 /* TextInput.swift */,
+			);
+			path = TextInput;
+			sourceTree = "<group>";
+		};
+		4BBF9245298C25E700F31472 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9246298C261500F31472 /* ViewSynchronize.swift */,
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,9 +363,13 @@
 				4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */,
 				4B225EEC298B3FD8007EE635 /* Root.swift in Sources */,
 				4B225EEE298B406C007EE635 /* RootView.swift in Sources */,
+				4BBF9243298C129C00F31472 /* TextInput.swift in Sources */,
 				4B225EF7298B47BA007EE635 /* LoginView.swift in Sources */,
 				4B225EF9298B47D6007EE635 /* Welcome.swift in Sources */,
+				4BBF923F298C0C5100F31472 /* CreateAccountView.swift in Sources */,
+				4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */,
 				4B225EF5298B47AE007EE635 /* Login.swift in Sources */,
+				4BBF9241298C0CAA00F31472 /* CreateAccount.swift in Sources */,
 				4B225EFB298B486F007EE635 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

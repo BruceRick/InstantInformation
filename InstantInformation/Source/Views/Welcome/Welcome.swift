@@ -53,7 +53,7 @@ struct Welcome: ReducerProtocol {
 				}
 
 				await send(.showItems([""]), animation: .easeIn(duration: 0.5))
-				try await self.clock.sleep(for: .seconds(2.0))
+				try await self.clock.sleep(for: .seconds(1.0))
 
 				await send(.showItems(["Information"]), animation: .easeIn(duration: 0.5))
 				try await self.clock.sleep(for: .seconds(0.5))
@@ -82,8 +82,11 @@ struct Welcome: ReducerProtocol {
 			state.shownItems = items
 			return .none
 
-		case .didTapGetStarted:
+		case .didTapCreateAccount:
             return .none
+
+		case .didTapLogin:
+			return .none
         }
     }
 }
