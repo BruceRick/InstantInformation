@@ -12,58 +12,46 @@ struct WelcomeView: View {
     let store: StoreOf<Welcome>
 
     var body: some View {
-        WithViewStore(self.store, observe: { $0 }) { viewStore in
-            Content(store: viewStore)
+        WithViewStore(store, observe: { $0 }) { viewStore in
+            Content(store: store, viewStore: viewStore)
         }
     }
 }
 
 private extension WelcomeView {
     struct Content: View {
-        let store: ViewStoreOf<Welcome>
+        let store: StoreOf<Welcome>
+        let viewStore: ViewStoreOf<Welcome>
     }
 }
 
 private extension WelcomeView.Content {
-
 	@ViewBuilder
     var body: some View {
 		VStack {
-			if store.completedAnimations.contains(.logo) {
-				logo
+			if viewStore.completedAnimations.contains(.logo) {
+                Logo()
+                    .transition(.opacity)
+                    .zIndex(100)
+                    .background(Color.white)
 			}
 
-			HStack(alignment: .top, spacing: 0) {
-				if store.completedAnimations.contains(.logo) {
-					text
-				}
-				if store.completedAnimations.contains(.logo) {
-					items
-				}
-			}.padding(.bottom, 10)
+            if viewStore.completedAnimations.contains(.logo) &&
+                !viewStore.completedAnimations.contains(.showContent) {
+                HStack(alignment: .top, spacing: 0) {
+                    leftText
+                    items
+                }.padding(.bottom, 10)
+                Spacer()
+            }
 
-			if store.completedAnimations.contains(.getStarted) {
-				createAccountButton
-				loginText
-				loginButton
+			if viewStore.completedAnimations.contains(.showContent) {
+				content
 			}
-			Spacer()
-		}.onAppear { store.send(.animate(.logo)) }
+		}.onAppear { viewStore.send(.animate(.logo)) }
     }
 
-	var logo: some View {
-		Image("logo")
-			.resizable()
-			.aspectRatio(contentMode: .fit)
-			.frame(width: 150, height: 150)
-			.padding(.top, 20)
-			.padding(.bottom, 20)
-			.transition(.opacity)
-			.zIndex(100)
-			.background(Color.white)
-	}
-
-	var text: some View {
+	var leftText: some View {
 		Text("ii. Instant ")
 			.fontWeight(.bold)
 			.frame(maxWidth: .infinity, alignment: .trailing)
@@ -72,28 +60,28 @@ private extension WelcomeView.Content {
 
 	var items: some View {
 		VStack(alignment: .leading) {
-			ForEach(Array(store.shownItems.enumerated()), id: \.offset) { index, text in
+			ForEach(Array(viewStore.shownItems.enumerated()), id: \.offset) { index, text in
 				Text(text)
 					.fontWeight(.bold)
 					.zIndex(Double(-index))
 					.frame(maxWidth: .infinity, alignment: .leading)
-					.transition(.move(edge: .top))
 					.background(Color.white)
 			}
 		}
 		.frame(maxWidth: .infinity, alignment: .trailing)
 	}
 
-	var loginText: some View {
-		Text("Have an account already?")
+	var switchContentText: some View {
+		Text(switchContentString)
 	}
 
-	var loginButton: some View {
+	var switchContentButton: some View {
 		Button {
-            store.send(.didTapLogin, animation: .linear)
+            let content: Welcome.Content = viewStore.contentShown == .login ? .createAccount : .login
+            viewStore.send(.showContent(content), animation: .linear)
 		} label: {
 			ZStack {
-				Text("Continue To Login")
+				Text(switchContentButtonString)
 					.fontWeight(.bold)
 					.frame(alignment: .center)
 				Image(systemName: "chevron.right")
@@ -102,31 +90,63 @@ private extension WelcomeView.Content {
 			}.frame(maxWidth: .infinity)
 		}
 		.padding()
-		.foregroundColor(.blue)
+		.foregroundColor(.black)
 		.overlay(
 			RoundedRectangle(cornerRadius: 26)
-				.stroke(.blue, lineWidth: 2)
+				.stroke(.black, lineWidth: 2)
 		)
 		.padding()
 		.transition(.opacity)
 	}
 
-	var createAccountButton: some View {
+	var actionButton: some View {
 		Button {
-            store.send(.didTapCreateAccount, animation: .linear)
+            let action: Welcome.Action = viewStore.contentShown == .login ? .performAccountCreation : .performLogin
+            viewStore.send(action, animation: .linear)
 		} label: {
-			Text("Create Account")
+			Text(actionButtonString)
 				.fontWeight(.bold)
                 .frame(maxWidth: .infinity, alignment: .center)
 		}
 		.padding()
 		.frame(maxWidth: .infinity)
 		.foregroundColor(.white)
-		.background(Color.blue)
+		.background(Color.black)
 		.clipShape(Capsule())
 		.padding()
 		.transition(.opacity)
 	}
+
+    @ViewBuilder
+    var content: some View {
+        if viewStore.contentShown == .login {
+            LoginView(store: store.scope(
+                state: \.login,
+                action: Welcome.Action.login
+            ))
+        } else {
+            CreateAccountView(store: store.scope(
+                state: \.createAccount,
+                action: Welcome.Action.createAccount
+            ))
+        }
+        Spacer()
+        actionButton
+        switchContentText
+        switchContentButton
+    }
+
+    var actionButtonString: String {
+        viewStore.contentShown == .login ? "Login" : "Create Account"
+    }
+
+    var switchContentString: String {
+        viewStore.contentShown == .login ? "Don't have an account?" : "Have an account already?"
+    }
+
+    var switchContentButtonString: String {
+        viewStore.contentShown == .login ? "Create an Account" : "Continue to Login"
+    }
 }
 
 // MARK: - SwiftUI previews

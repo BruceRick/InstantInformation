@@ -17,24 +17,9 @@ struct RootView: View {
     }
 
     var content: some View {
-		WithViewStore(self.store, observe: { $0 }) { viewStore in
-			switch viewStore.currentPage {
-			case .welcome:
-				WelcomeView(store: self.store.scope(
-					state: \.welcome,
-					action: Root.Action.welcome
-				))
-			case .login:
-				LoginView(store: self.store.scope(
-					state: \.login,
-					action: Root.Action.login
-				))
-			case .createAccount:
-				CreateAccountView(store: self.store.scope(
-					state: \.createAccount,
-					action: Root.Action.createAccount
-				))
-			}
-		}
+        WelcomeView(store: self.store.scope(
+            state: \.welcome,
+            action: Root.Action.welcome
+        ))
     }
 }

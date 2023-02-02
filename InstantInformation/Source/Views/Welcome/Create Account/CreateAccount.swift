@@ -25,7 +25,6 @@ struct CreateAccount: ReducerProtocol {
 
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
-		case createAccount
 	}
 
     var body: some ReducerProtocol<State, Action> {
@@ -33,9 +32,6 @@ struct CreateAccount: ReducerProtocol {
         Reduce { _, action in
             switch action {
             case .binding:
-                return .none
-
-            case .createAccount:
                 return .none
             }
         }

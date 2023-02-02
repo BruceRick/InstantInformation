@@ -27,6 +27,15 @@ private extension LoginView {
 private extension LoginView.Content {
 	@ViewBuilder
 	var body: some View {
-		Text("Login")
+        VStack {
+            Text("Login")
+                .fontWeight(.bold)
+            TextInput(placeHolder: "Username", text: store.binding(\.$username))
+                .textInputAutocapitalization(.never)
+                .autocorrectionDisabled()
+            TextInput(placeHolder: "Password", text: store.binding(\.$password), isSecure: true)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 40)
 	}
 }

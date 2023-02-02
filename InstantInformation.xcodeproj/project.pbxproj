@@ -23,6 +23,7 @@
 		4BBF9241298C0CAA00F31472 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9240298C0CAA00F31472 /* CreateAccount.swift */; };
 		4BBF9243298C129C00F31472 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9242298C129C00F31472 /* TextInput.swift */; };
 		4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9246298C261500F31472 /* ViewSynchronize.swift */; };
+		4BBF924A298C406600F31472 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9249298C406600F31472 /* Logo.swift */; };
 		4BC040D2298B2ABF00994366 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC040D1298B2ABF00994366 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,7 @@
 		4BBF9240298C0CAA00F31472 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
 		4BBF9242298C129C00F31472 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		4BBF9246298C261500F31472 /* ViewSynchronize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSynchronize.swift; sourceTree = "<group>"; };
+		4BBF9249298C406600F31472 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,8 +109,6 @@
 				4B225EEB298B3FD8007EE635 /* Root.swift */,
 				4B225EED298B406C007EE635 /* RootView.swift */,
 				4B225EF2298B4508007EE635 /* Welcome */,
-				4B225EF1298B44FD007EE635 /* Login */,
-				4B225EFC298B56CF007EE635 /* Create Account */,
 				4B225EF3298B4516007EE635 /* Main */,
 			);
 			path = Views;
@@ -128,6 +128,8 @@
 			children = (
 				4B225EF8298B47D6007EE635 /* Welcome.swift */,
 				4B225EFA298B486F007EE635 /* WelcomeView.swift */,
+				4B225EF1298B44FD007EE635 /* Login */,
+				4B225EFC298B56CF007EE635 /* Create Account */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -135,7 +137,7 @@
 		4B225EF3298B4516007EE635 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				4BBF9244298C1D7700F31472 /* TextInput */,
+				4BBF9248298C405100F31472 /* Generic */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -206,20 +208,21 @@
 			path = InstantInformationUITests;
 			sourceTree = "<group>";
 		};
-		4BBF9244298C1D7700F31472 /* TextInput */ = {
-			isa = PBXGroup;
-			children = (
-				4BBF9242298C129C00F31472 /* TextInput.swift */,
-			);
-			path = TextInput;
-			sourceTree = "<group>";
-		};
 		4BBF9245298C25E700F31472 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
 				4BBF9246298C261500F31472 /* ViewSynchronize.swift */,
 			);
 			path = Logic;
+			sourceTree = "<group>";
+		};
+		4BBF9248298C405100F31472 /* Generic */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9249298C406600F31472 /* Logo.swift */,
+				4BBF9242298C129C00F31472 /* TextInput.swift */,
+			);
+			path = Generic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +373,7 @@
 				4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */,
 				4B225EF5298B47AE007EE635 /* Login.swift in Sources */,
 				4BBF9241298C0CAA00F31472 /* CreateAccount.swift in Sources */,
+				4BBF924A298C406600F31472 /* Logo.swift in Sources */,
 				4B225EFB298B486F007EE635 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

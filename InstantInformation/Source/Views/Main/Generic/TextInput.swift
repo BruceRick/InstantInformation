@@ -23,7 +23,7 @@ struct TextInput: View {
             textFieldContainer
                 .font(.subheadline)
             Rectangle()
-                .fill(Color.gray)
+                .fill(Color(.systemGray4))
                 .frame(height: 1)
                 .frame(maxWidth: .infinity)
         }
