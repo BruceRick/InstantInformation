@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4B225EE9298B3304007EE635 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B225EE8298B3304007EE635 /* Launch Screen.storyboard */; };
 		4B225EEC298B3FD8007EE635 /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EEB298B3FD8007EE635 /* Root.swift */; };
 		4B225EEE298B406C007EE635 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EED298B406C007EE635 /* RootView.swift */; };
+		4B225EF5298B47AE007EE635 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EF4298B47AE007EE635 /* Login.swift */; };
+		4B225EF7298B47BA007EE635 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EF6298B47BA007EE635 /* LoginView.swift */; };
+		4B225EF9298B47D6007EE635 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EF8298B47D6007EE635 /* Welcome.swift */; };
+		4B225EFB298B486F007EE635 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B225EFA298B486F007EE635 /* WelcomeView.swift */; };
 		4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA77F0929602D2500C8093A /* InstantInformationApp.swift */; };
 		4BA77F0E29602D2600C8093A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA77F0D29602D2600C8093A /* Assets.xcassets */; };
 		4BA77F1229602D2600C8093A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BA77F1129602D2600C8093A /* Preview Assets.xcassets */; };
@@ -37,9 +40,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4B225EE8298B3304007EE635 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4B225EEB298B3FD8007EE635 /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
 		4B225EED298B406C007EE635 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		4B225EF4298B47AE007EE635 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		4B225EF6298B47BA007EE635 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		4B225EF8298B47D6007EE635 /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
+		4B225EFA298B486F007EE635 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		4BA77F0629602D2500C8093A /* Instant Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Instant Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BA77F0929602D2500C8093A /* InstantInformationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantInformationApp.swift; sourceTree = "<group>"; };
 		4BA77F0D29602D2600C8093A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -81,10 +87,54 @@
 		4B225EEA298B3DDA007EE635 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				4B225EEB298B3FD8007EE635 /* Root.swift */,
-				4B225EED298B406C007EE635 /* RootView.swift */,
+				4B225EF0298B44EA007EE635 /* Views */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		4B225EF0298B44EA007EE635 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4B225EEB298B3FD8007EE635 /* Root.swift */,
+				4B225EED298B406C007EE635 /* RootView.swift */,
+				4B225EF2298B4508007EE635 /* Welcome */,
+				4B225EF1298B44FD007EE635 /* Login */,
+				4B225EFC298B56CF007EE635 /* Signup */,
+				4B225EF3298B4516007EE635 /* Main */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4B225EF1298B44FD007EE635 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4B225EF4298B47AE007EE635 /* Login.swift */,
+				4B225EF6298B47BA007EE635 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4B225EF2298B4508007EE635 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				4B225EF8298B47D6007EE635 /* Welcome.swift */,
+				4B225EFA298B486F007EE635 /* WelcomeView.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		4B225EF3298B4516007EE635 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		4B225EFC298B56CF007EE635 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		4BA77EFD29602D2500C8093A = {
@@ -113,7 +163,6 @@
 				4BA77F0929602D2500C8093A /* InstantInformationApp.swift */,
 				4BA77F0D29602D2600C8093A /* Assets.xcassets */,
 				4BA77F0F29602D2600C8093A /* InstantInformation.entitlements */,
-				4B225EE8298B3304007EE635 /* Launch Screen.storyboard */,
 				4B225EEA298B3DDA007EE635 /* Source */,
 				4BA77F1029602D2600C8093A /* Preview Content */,
 			);
@@ -257,7 +306,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B225EE9298B3304007EE635 /* Launch Screen.storyboard in Resources */,
 				4BA77F1229602D2600C8093A /* Preview Assets.xcassets in Resources */,
 				4BA77F0E29602D2600C8093A /* Assets.xcassets in Resources */,
 			);
@@ -287,6 +335,10 @@
 				4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */,
 				4B225EEC298B3FD8007EE635 /* Root.swift in Sources */,
 				4B225EEE298B406C007EE635 /* RootView.swift in Sources */,
+				4B225EF7298B47BA007EE635 /* LoginView.swift in Sources */,
+				4B225EF9298B47D6007EE635 /* Welcome.swift in Sources */,
+				4B225EF5298B47AE007EE635 /* Login.swift in Sources */,
+				4B225EFB298B486F007EE635 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,10 +505,10 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -495,10 +547,10 @@
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

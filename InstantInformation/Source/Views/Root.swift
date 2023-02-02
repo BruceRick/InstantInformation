@@ -9,10 +9,12 @@ import ComposableArchitecture
 
 struct Root: ReducerProtocol {
     struct State: Equatable {
+        var welcome = Welcome.State()
     }
 
     enum Action {
         case onAppear
+        case welcome(Welcome.Action)
     }
 
     var body: some ReducerProtocol<State, Action> {
@@ -25,6 +27,10 @@ struct Root: ReducerProtocol {
             default:
                 return .none
             }
+        }
+
+        Scope(state: \.welcome, action: /Action.welcome) {
+          Welcome()
         }
     }
 }
