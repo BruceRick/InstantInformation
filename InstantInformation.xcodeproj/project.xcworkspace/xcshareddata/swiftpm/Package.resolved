@@ -46,12 +46,57 @@
       }
     },
     {
+      "identity" : "swift-clocks",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-clocks",
+      "state" : {
+        "revision" : "20b25ca0dd88ebfb9111ec937814ddc5a8880172",
+        "version" : "0.2.0"
+      }
+    },
+    {
+      "identity" : "swift-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-collections",
+      "state" : {
+        "revision" : "937e904258d22af6e447a0b72c0bc67583ef64a2",
+        "version" : "1.0.4"
+      }
+    },
+    {
       "identity" : "swift-composable-architecture",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-composable-architecture",
       "state" : {
-        "revision" : "b67569f69813140cd9c984db33ee959d9711a008",
-        "version" : "0.9.0"
+        "revision" : "b690a617d1366bd36f047e5da5d3185f20daac71",
+        "version" : "0.50.1"
+      }
+    },
+    {
+      "identity" : "swift-custom-dump",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-custom-dump",
+      "state" : {
+        "revision" : "87dd388a193569b288d03cb4060db54f90d1a66f",
+        "version" : "0.7.0"
+      }
+    },
+    {
+      "identity" : "swift-dependencies",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-dependencies",
+      "state" : {
+        "revision" : "8282b0c59662eb38946afe30eb403663fc2ecf76",
+        "version" : "0.1.4"
+      }
+    },
+    {
+      "identity" : "swift-identified-collections",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swift-identified-collections",
+      "state" : {
+        "revision" : "fd34c544ad27f3ba6b19142b348005bfa85b6005",
+        "version" : "0.6.0"
       }
     },
     {
@@ -70,6 +115,15 @@
       "state" : {
         "branch" : "main",
         "revision" : "cdc051d242a821e65c3f723c8b5b77634fee33f0"
+      }
+    },
+    {
+      "identity" : "swiftui-navigation",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/pointfreeco/swiftui-navigation",
+      "state" : {
+        "revision" : "270a754308f5440be52fc295242eb7031638bd15",
+        "version" : "0.6.1"
       }
     },
     {
