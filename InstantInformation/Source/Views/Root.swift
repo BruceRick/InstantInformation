@@ -18,10 +18,9 @@ struct Root: ReducerProtocol {
     }
 
     var body: some ReducerProtocol<State, Action> {
-        Reduce { state, action in
+        Reduce { _, action in
             switch action {
             case .onAppear:
-                state = .init()
                 return .none
 
             default:

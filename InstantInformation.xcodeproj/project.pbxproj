@@ -24,6 +24,8 @@
 		4BBF9243298C129C00F31472 /* TextInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9242298C129C00F31472 /* TextInput.swift */; };
 		4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9246298C261500F31472 /* ViewSynchronize.swift */; };
 		4BBF924A298C406600F31472 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9249298C406600F31472 /* Logo.swift */; };
+		4BBF9253298C5B0800F31472 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9252298C5B0800F31472 /* Database.swift */; };
+		4BBF9255298C5FFC00F31472 /* DatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9254298C5FFC00F31472 /* DatabaseClient.swift */; };
 		4BC040D2298B2ABF00994366 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC040D1298B2ABF00994366 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +68,8 @@
 		4BBF9242298C129C00F31472 /* TextInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInput.swift; sourceTree = "<group>"; };
 		4BBF9246298C261500F31472 /* ViewSynchronize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSynchronize.swift; sourceTree = "<group>"; };
 		4BBF9249298C406600F31472 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
+		4BBF9252298C5B0800F31472 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		4BBF9254298C5FFC00F31472 /* DatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +215,9 @@
 		4BBF9245298C25E700F31472 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				4BBF924F298C5A6100F31472 /* Network */,
+				4BBF9251298C5ACF00F31472 /* Database */,
+				4BBF9250298C5A7600F31472 /* Clients */,
 				4BBF9246298C261500F31472 /* ViewSynchronize.swift */,
 			);
 			path = Logic;
@@ -223,6 +230,37 @@
 				4BBF9242298C129C00F31472 /* TextInput.swift */,
 			);
 			path = Generic;
+			sourceTree = "<group>";
+		};
+		4BBF924F298C5A6100F31472 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9256298C660400F31472 /* Models */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		4BBF9250298C5A7600F31472 /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9254298C5FFC00F31472 /* DatabaseClient.swift */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		4BBF9251298C5ACF00F31472 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9252298C5B0800F31472 /* Database.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		4BBF9256298C660400F31472 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +403,7 @@
 			files = (
 				4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */,
 				4B225EEC298B3FD8007EE635 /* Root.swift in Sources */,
+				4BBF9255298C5FFC00F31472 /* DatabaseClient.swift in Sources */,
 				4B225EEE298B406C007EE635 /* RootView.swift in Sources */,
 				4BBF9243298C129C00F31472 /* TextInput.swift in Sources */,
 				4B225EF7298B47BA007EE635 /* LoginView.swift in Sources */,
@@ -375,6 +414,7 @@
 				4BBF9241298C0CAA00F31472 /* CreateAccount.swift in Sources */,
 				4BBF924A298C406600F31472 /* Logo.swift in Sources */,
 				4B225EFB298B486F007EE635 /* WelcomeView.swift in Sources */,
+				4BBF9253298C5B0800F31472 /* Database.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

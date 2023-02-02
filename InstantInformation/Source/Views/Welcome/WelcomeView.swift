@@ -48,7 +48,7 @@ private extension WelcomeView.Content {
 			if viewStore.completedAnimations.contains(.showContent) {
 				content
 			}
-		}.onAppear { viewStore.send(.animate(.logo)) }
+		}.onAppear { viewStore.send(.onAppear) }
     }
 
 	var leftText: some View {

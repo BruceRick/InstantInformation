@@ -11,16 +11,19 @@ struct Welcome: ReducerProtocol {
     struct State: Equatable {
         let items = ["News", "Entertainment", "Sports", "Friends", "Family", "Safety", "Privacy"]
 
-		var completedAnimations: [AnimationStep] = []
+        var completedAnimations: [AnimationStep] = []
         var shownItems: [String] = []
 
         var contentShown: Content = .createAccount
 
         var login = Login.State()
         var createAccount = CreateAccount.State()
+
+        var showAnimation = false
     }
 
     enum Action {
+        case onAppear
 		case animate(AnimationStep)
 		case stepCompleted(AnimationStep)
         case showItem(String)
@@ -33,7 +36,7 @@ struct Welcome: ReducerProtocol {
         case createAccount(CreateAccount.Action)
     }
 
-    enum AnimationStep {
+    enum AnimationStep: CaseIterable {
         case logo
         case items
         case showContent
@@ -45,12 +48,18 @@ struct Welcome: ReducerProtocol {
     }
 
     @Dependency(\.continuousClock) var clock
+    @Dependency(\.database) var database
 
     enum CancelID {}
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                let showAnimation = !database.getDidShowInitialAnimation()
+                state.completedAnimations = showAnimation ? [] : AnimationStep.allCases
+                return showAnimation ? .init(value: .animate(.logo)) : .none
+
             case .animate(.logo):
                 return .run { send in
                     await send(.stepCompleted(.logo), animation: .easeIn(duration: 2.0))
@@ -82,6 +91,7 @@ struct Welcome: ReducerProtocol {
                 return .run { send in
                     try await self.clock.sleep(for: .seconds(1.0))
                     await send(.stepCompleted(.showContent), animation: .easeIn(duration: 1.0))
+                    self.database.setDidShowInitialAnimation(true)
                 }
                 .cancellable(id: CancelID.self)
 
