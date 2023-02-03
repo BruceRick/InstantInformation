@@ -10,26 +10,41 @@ import ComposableArchitecture
 struct Root: ReducerProtocol {
     struct State: Equatable {
         var welcome = Welcome.State()
+        var mainNavigation = MainNavigation.State()
+
+        var showNavigation = false
     }
 
     enum Action {
         case onAppear
         case welcome(Welcome.Action)
+        case mainNavigation(MainNavigation.Action)
     }
 
     var body: some ReducerProtocol<State, Action> {
-        Reduce { _, action in
+        Reduce { state, action in
             switch action {
             case .onAppear:
                 return .none
 
-            default:
+            case .welcome(.complete):
+                state.showNavigation = true
+                return .none
+
+            case .mainNavigation:
+                return .none
+
+            case .welcome:
                 return .none
             }
         }
 
         Scope(state: \.welcome, action: /Action.welcome) {
 			Welcome()
+        }
+
+        Scope(state: \.mainNavigation, action: /Action.mainNavigation) {
+            MainNavigation()
         }
     }
 }

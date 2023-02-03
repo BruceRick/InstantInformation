@@ -12,13 +12,19 @@ import XCTestDynamicOverlay
 public struct DatabaseClient {
     public var getDidShowInitialAnimation: () -> Bool
     public var setDidShowInitialAnimation: (Bool) -> Void
+    public var storeAuthentication: (Authentication) -> Void
+    public var storeUser: (User) -> Void
 
     public init(
         getDidShowInitialAnimation: @escaping () -> Bool,
-        setDidShowInitialAnimation: @escaping (Bool) -> Void
+        setDidShowInitialAnimation: @escaping (Bool) -> Void,
+        storeAuthentication: @escaping (Authentication) -> Void,
+        storeUser: @escaping (User) -> Void
     ) {
         self.getDidShowInitialAnimation = getDidShowInitialAnimation
         self.setDidShowInitialAnimation = setDidShowInitialAnimation
+        self.storeAuthentication = storeAuthentication
+        self.storeUser = storeUser
     }
 }
 
@@ -29,6 +35,12 @@ extension DatabaseClient: DependencyKey {
         },
         setDidShowInitialAnimation: { value in
             Database.set(value, key: .didShowInitialAnimation)
+        },
+        storeAuthentication: { authentication in
+            Database.set(authentication, key: .authentication)
+        },
+        storeUser: { user in
+            Database.set(user, key: .user)
         }
     )
 }
@@ -36,12 +48,16 @@ extension DatabaseClient: DependencyKey {
 extension DatabaseClient: TestDependencyKey {
     public static let testValue = Self(
         getDidShowInitialAnimation: unimplemented("\(Self.self).getShowInitialAnimation"),
-        setDidShowInitialAnimation: unimplemented("\(Self.self).setShowInitialAnimation")
+        setDidShowInitialAnimation: unimplemented("\(Self.self).setShowInitialAnimation"),
+        storeAuthentication: unimplemented("\(Self.self).storeAuthentication"),
+        storeUser: unimplemented("\(Self.self).storeUser")
     )
 
     public static let previewValue = Self(
         getDidShowInitialAnimation: { false },
-        setDidShowInitialAnimation: { _ in }
+        setDidShowInitialAnimation: { _ in },
+        storeAuthentication: { _ in },
+        storeUser: { _ in }
     )
 }
 

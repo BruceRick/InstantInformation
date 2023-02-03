@@ -10,6 +10,8 @@ import Foundation
 public struct Database {
     public enum Key: String {
         case didShowInitialAnimation
+        case authentication
+        case user
     }
 
     static let defaults = UserDefaults.standard

@@ -48,7 +48,22 @@ private extension WelcomeView.Content {
 			if viewStore.completedAnimations.contains(.showContent) {
 				content
 			}
-		}.onAppear { viewStore.send(.onAppear) }
+		}
+        .onAppear { viewStore.send(.onAppear) }
+        .overlay {
+            if viewStore.loading {
+                ZStack(alignment: .center) {
+                    Color.black.opacity(0.75)
+                    VStack {
+                        Spacer()
+                        ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color.white))
+                        Spacer()
+                    }
+                }.ignoresSafeArea()
+            } else {
+                EmptyView()
+            }
+        }
     }
 
 	var leftText: some View {
@@ -101,7 +116,7 @@ private extension WelcomeView.Content {
 
 	var actionButton: some View {
 		Button {
-            let action: Welcome.Action = viewStore.contentShown == .login ? .performAccountCreation : .performLogin
+            let action: Welcome.Action = viewStore.contentShown == .login ? .registerRequest : .loginRequest
             viewStore.send(action, animation: .linear)
 		} label: {
 			Text(actionButtonString)

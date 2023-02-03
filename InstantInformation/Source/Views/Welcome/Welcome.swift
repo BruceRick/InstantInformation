@@ -5,6 +5,7 @@
 //  Created by Bruce Rick on 2023-02-01.
 //
 
+import Foundation
 import ComposableArchitecture
 
 struct Welcome: ReducerProtocol {
@@ -20,6 +21,7 @@ struct Welcome: ReducerProtocol {
         var createAccount = CreateAccount.State()
 
         var showAnimation = false
+        var loading = false
     }
 
     enum Action {
@@ -29,8 +31,15 @@ struct Welcome: ReducerProtocol {
         case showItem(String)
 		case showItems([String])
 		case showContent(Content)
-        case performLogin
-        case performAccountCreation
+
+        case loginRequest
+        case registerRequest
+        case userRequest
+        case loginResponse(TaskResult<(data: Authentication, response: URLResponse)>)
+        case registerResponse(TaskResult<(data: Authentication, response: URLResponse)>)
+        case userResponse(TaskResult<(data: User, response: URLResponse)>)
+
+        case complete
 
         case login(Login.Action)
         case createAccount(CreateAccount.Action)
@@ -49,8 +58,12 @@ struct Welcome: ReducerProtocol {
 
     @Dependency(\.continuousClock) var clock
     @Dependency(\.database) var database
+    @Dependency(\.networkClient.api) var api
 
     enum CancelID {}
+    enum LoginCancelID {}
+    enum RegisterCancelID {}
+    enum UserCancelID {}
 
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
@@ -111,10 +124,65 @@ struct Welcome: ReducerProtocol {
                 state.contentShown = content
                 return .none
 
-            case .performLogin:
+            case .loginRequest:
+                state.loading = true
+                return .task { [username = state.login.username, password = state.login.password] in
+                    await .loginResponse(TaskResult {
+                        try await self.api().request(endpoint: .login(username: username, password: password))
+                    })
+                }
+                .cancellable(id: LoginCancelID.self)
+
+            // swiftlint:disable closure_parameter_position
+            case .registerRequest:
+                state.loading = true
+                return .task { [
+                    username = state.createAccount.username,
+                    email = state.createAccount.email,
+                    password = state.createAccount.password] in
+                        await .registerResponse(TaskResult {
+                            try await self.api()
+                                .request(endpoint: .register(username: username, email: email, password: password))
+                        })
+                }
+                .cancellable(id: RegisterCancelID.self)
+            // swiftlint:enable closure_parameter_position
+
+            case .userRequest:
+                state.loading = true
+                return .task {
+                    await .userResponse(TaskResult {
+                        try await self.api().request(endpoint: .user)
+                    })
+                }
+                .cancellable(id: UserCancelID.self)
+
+            case .loginResponse(.success((let data, _))):
+                database.storeAuthentication(data)
+                return .init(value: .userRequest)
+
+            case .loginResponse(.failure):
+                state.loading = false
                 return .none
 
-            case .performAccountCreation:
+            case .registerResponse(.success((let data, _))):
+                database.storeAuthentication(data)
+                return .init(value: .userRequest)
+
+            case .registerResponse(.failure):
+                state.loading = false
+                return .none
+
+            case .userResponse(.success((let data, _))):
+                state.loading = false
+                database.storeUser(data)
+                return .init(value: .complete)
+
+            case .userResponse(.failure):
+                state.loading = false
+                return .none
+
+            case .complete:
                 return .none
 
             case .login:

@@ -26,6 +26,15 @@
 		4BBF924A298C406600F31472 /* Logo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9249298C406600F31472 /* Logo.swift */; };
 		4BBF9253298C5B0800F31472 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9252298C5B0800F31472 /* Database.swift */; };
 		4BBF9255298C5FFC00F31472 /* DatabaseClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9254298C5FFC00F31472 /* DatabaseClient.swift */; };
+		4BBF9258298D6C0C00F31472 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9257298D6C0C00F31472 /* Endpoint.swift */; };
+		4BBF925A298D6FE700F31472 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9259298D6FE700F31472 /* API.swift */; };
+		4BBF925D298D73FA00F31472 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF925C298D73FA00F31472 /* Authentication.swift */; };
+		4BBF9260298D760A00F31472 /* LiveAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF925F298D760A00F31472 /* LiveAPI.swift */; };
+		4BBF9263298D76B100F31472 /* MockAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9262298D76B100F31472 /* MockAPI.swift */; };
+		4BBF9265298D7AC300F31472 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9264298D7AC300F31472 /* User.swift */; };
+		4BBF9267298D7AF600F31472 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9266298D7AF600F31472 /* NetworkClient.swift */; };
+		4BBF9269298D8C0100F31472 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9268298D8C0100F31472 /* MainNavigation.swift */; };
+		4BBF926B298D8C1000F31472 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF926A298D8C1000F31472 /* MainNavigationView.swift */; };
 		4BC040D2298B2ABF00994366 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC040D1298B2ABF00994366 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +79,15 @@
 		4BBF9249298C406600F31472 /* Logo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logo.swift; sourceTree = "<group>"; };
 		4BBF9252298C5B0800F31472 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		4BBF9254298C5FFC00F31472 /* DatabaseClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseClient.swift; sourceTree = "<group>"; };
+		4BBF9257298D6C0C00F31472 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		4BBF9259298D6FE700F31472 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		4BBF925C298D73FA00F31472 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		4BBF925F298D760A00F31472 /* LiveAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveAPI.swift; sourceTree = "<group>"; };
+		4BBF9262298D76B100F31472 /* MockAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPI.swift; sourceTree = "<group>"; };
+		4BBF9264298D7AC300F31472 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4BBF9266298D7AF600F31472 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		4BBF9268298D8C0100F31472 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
+		4BBF926A298D8C1000F31472 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +159,8 @@
 		4B225EF3298B4516007EE635 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				4BBF9268298D8C0100F31472 /* MainNavigation.swift */,
+				4BBF926A298D8C1000F31472 /* MainNavigationView.swift */,
 				4BBF9248298C405100F31472 /* Generic */,
 			);
 			path = Main;
@@ -235,6 +255,10 @@
 		4BBF924F298C5A6100F31472 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				4BBF9259298D6FE700F31472 /* API.swift */,
+				4BBF9257298D6C0C00F31472 /* Endpoint.swift */,
+				4BBF925E298D75C300F31472 /* Live */,
+				4BBF9261298D769B00F31472 /* Mock */,
 				4BBF9256298C660400F31472 /* Models */,
 			);
 			path = Network;
@@ -244,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				4BBF9254298C5FFC00F31472 /* DatabaseClient.swift */,
+				4BBF9266298D7AF600F31472 /* NetworkClient.swift */,
 			);
 			path = Clients;
 			sourceTree = "<group>";
@@ -259,8 +284,26 @@
 		4BBF9256298C660400F31472 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4BBF925C298D73FA00F31472 /* Authentication.swift */,
+				4BBF9264298D7AC300F31472 /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		4BBF925E298D75C300F31472 /* Live */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF925F298D760A00F31472 /* LiveAPI.swift */,
+			);
+			path = Live;
+			sourceTree = "<group>";
+		};
+		4BBF9261298D769B00F31472 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9262298D76B100F31472 /* MockAPI.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -402,18 +445,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */,
+				4BBF926B298D8C1000F31472 /* MainNavigationView.swift in Sources */,
 				4B225EEC298B3FD8007EE635 /* Root.swift in Sources */,
 				4BBF9255298C5FFC00F31472 /* DatabaseClient.swift in Sources */,
 				4B225EEE298B406C007EE635 /* RootView.swift in Sources */,
+				4BBF9269298D8C0100F31472 /* MainNavigation.swift in Sources */,
+				4BBF9258298D6C0C00F31472 /* Endpoint.swift in Sources */,
 				4BBF9243298C129C00F31472 /* TextInput.swift in Sources */,
 				4B225EF7298B47BA007EE635 /* LoginView.swift in Sources */,
 				4B225EF9298B47D6007EE635 /* Welcome.swift in Sources */,
+				4BBF9267298D7AF600F31472 /* NetworkClient.swift in Sources */,
+				4BBF9265298D7AC300F31472 /* User.swift in Sources */,
 				4BBF923F298C0C5100F31472 /* CreateAccountView.swift in Sources */,
 				4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */,
+				4BBF9263298D76B100F31472 /* MockAPI.swift in Sources */,
 				4B225EF5298B47AE007EE635 /* Login.swift in Sources */,
 				4BBF9241298C0CAA00F31472 /* CreateAccount.swift in Sources */,
+				4BBF9260298D760A00F31472 /* LiveAPI.swift in Sources */,
 				4BBF924A298C406600F31472 /* Logo.swift in Sources */,
 				4B225EFB298B486F007EE635 /* WelcomeView.swift in Sources */,
+				4BBF925A298D6FE700F31472 /* API.swift in Sources */,
+				4BBF925D298D73FA00F31472 /* Authentication.swift in Sources */,
 				4BBF9253298C5B0800F31472 /* Database.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

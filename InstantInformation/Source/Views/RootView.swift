@@ -17,9 +17,18 @@ struct RootView: View {
     }
 
     var content: some View {
-        WelcomeView(store: self.store.scope(
-            state: \.welcome,
-            action: Root.Action.welcome
-        ))
+        WithViewStore(self.store, observe: { $0 }) { viewStore in
+            if viewStore.showNavigation {
+                MainNavigationView(store: self.store.scope(
+                    state: \.mainNavigation,
+                    action: Root.Action.mainNavigation
+                ))
+            } else {
+                WelcomeView(store: self.store.scope(
+                    state: \.welcome,
+                    action: Root.Action.welcome
+                ))
+            }
+        }
     }
 }
