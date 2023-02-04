@@ -35,8 +35,8 @@ private extension TimelineView.Content {
                 .padding(.horizontal, 10)
                 .padding(.top, 10)
                 .frame(maxWidth: .infinity)
-                .padding(.top, reader.safeAreaInsets.top)
-                .padding(.bottom, reader.safeAreaInsets.bottom)
+                .padding(.top, reader.safeAreaInsets.top + 60)
+                .padding(.bottom, reader.safeAreaInsets.bottom + 70)
             }
             .ignoresSafeArea()
             .frame(maxWidth: .infinity)

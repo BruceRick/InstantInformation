@@ -35,16 +35,18 @@ private extension MainNavigationView.Content {
             ))
 
             statusBarBackground
-
-//            NavigationFooterView(store: self.store.scope(
-//                state: \.navigationFooter,
-//                action: MainNavigation.Action.navigationFooter
-//            )).frame(alignment: .bottom)
-        }.overlay {
-//            NavigationHeaderView(store: self.store.scope(
-//                state: \.navigationHeader,
-//                action: MainNavigation.Action.navigationHeader
-//            )).frame(alignment: .top)
+        }
+        .overlay(alignment: .top) {
+            NavigationHeaderView(store: self.store.scope(
+                state: \.navigationHeader,
+                action: MainNavigation.Action.navigationHeader
+            ))
+        }
+        .overlay(alignment: .bottom) {
+            NavigationFooterView(store: self.store.scope(
+                state: \.navigationFooter,
+                action: MainNavigation.Action.navigationFooter
+            ))
         }
     }
 

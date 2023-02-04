@@ -23,8 +23,6 @@ struct PostView: View {
 
     @State var reply = ""
 
-    let padding = 16.0
-
     enum Menu {
         case replying
         case reporting
@@ -146,40 +144,47 @@ struct PostView: View {
         menu != nil ? 4.0 : 2.0
     }
 
+    let padding = 10.0
+
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 0) {
                 HStack(alignment: .center, spacing: 0) {
                     Image(profileImage)
                         .resizable()
-                        .frame(width: 40, height: 40)
+                        .frame(width: 42, height: 42)
                         .aspectRatio(contentMode: .fit)
                         .clipShape(Capsule())
+                        .padding(.leading, padding)
+                        .padding(.trailing, padding)
+                        .padding(.top, 2)
                     VStack(alignment: .leading) {
-                        HStack(spacing: 0) {
+                        HStack(alignment: .center, spacing: 0) {
                             Text("\(name)")
                                 .fontWeight(.bold)
-                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .font(.body)
                                 .lineLimit(1)
                             Image(systemName: "checkmark.shield.fill")
-                                .font(.system(size: 12))
-                                .padding(.leading, 4)
+                                .font(.system(size: 14))
+                                .foregroundColor(.blue)
+                                .padding(.leading, 2)
                         }
-                        HStack(spacing: 0) {
+                        HStack(alignment: .center, spacing: 0) {
                             Text("ii.\(username)/\(feed)")
-                                .font(.caption)
+                                .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundColor(.gray)
                                 .lineLimit(1)
                             Text(" • 55m")
-                                .font(.caption)
+                                .font(.subheadline)
                                 .fontWeight(.medium)
                                 .foregroundColor(.gray)
                                 .lineLimit(1)
                         }
                     }
+                    .padding(.vertical, padding)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.leading, padding/2)
                     Button {
                         withAnimation {
                             menu = menu == .reporting ? nil : .reporting
@@ -188,26 +193,25 @@ struct PostView: View {
                         Image(systemName: "exclamationmark.circle\(menu == .reporting ? ".fill" : "")")
                             .font(.system(size: 20))
                             .fontWeight(.medium)
-                            .frame(alignment: .topTrailing)
+                            .frame(width: 38)
                     }
-                    .frame(height: 40, alignment: .topTrailing)
-                    .padding(.leading, padding)
+                    .frame(maxHeight: .infinity)
                     .foregroundColor(menu == .reporting ? menu?.color : Color(.systemGray2))
-                }
-                .padding(.horizontal, padding)
-                .padding(.top, padding)
-                .padding(.bottom, padding - 6)
+                    .padding(.trailing, padding)
+                    .background(.clear)
+                }.fixedSize(horizontal: false, vertical: true)
+                horizontalSeparator
                 Text(text)
                     .font(.subheadline)
-                    .fontWeight(.light)
-                    .padding(.horizontal, padding)
-                    .padding(.bottom, padding - 4)
+                    .fontWeight(.regular)
+                    .foregroundColor(.gray)
+                    .padding(padding)
                     .fixedSize(horizontal: false, vertical: true)
                 horizontalSeparator
                 actionView
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .background(.regularMaterial)
+            .background(.ultraThinMaterial)
             .overlay(
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(borderColor, lineWidth: borderWidth)
@@ -235,10 +239,12 @@ struct PostView: View {
                     .zIndex(-2)
                 Text("Replying to ii.brick")
                     .font(.footnote)
-                    .fontWeight(.medium)
+                    .fontWeight(.bold)
+                    .transition(.move(edge: .top))
                     .foregroundColor(.green)
                     .padding(.top, 2)
                     .padding(.bottom, 5)
+                    .zIndex(-2)
                 replyView
             }
         }
@@ -297,7 +303,7 @@ struct PostView: View {
         .zIndex(-1)
         .frame(maxWidth: .infinity)
         .padding(.leading, 16)
-        .background(.regularMaterial)
+        .background(.ultraThinMaterial)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color(.systemGray5), lineWidth: 2)
@@ -321,10 +327,12 @@ struct PostView: View {
                         Text("\(name)")
                             .fontWeight(.bold)
                             .font(.subheadline)
+                            .foregroundColor(.gray)
                             .lineLimit(1)
                         Image(systemName: "checkmark.shield.fill")
-                            .font(.system(size: 10))
-                            .padding(.leading, 4)
+                            .font(.system(size: 12))
+                            .foregroundColor(.blue)
+                            .padding(.leading, 2)
                     }
                     Text("ii.\(username)/\(feed)")
                         .font(.caption)
@@ -341,7 +349,7 @@ struct PostView: View {
                     .fontWeight(.light)
                 Spacer()
             }
-            .padding(10)
+            .padding(padding)
             .frame(minHeight: 100)
             .background(.white)
             .overlay(
@@ -360,7 +368,7 @@ struct PostView: View {
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .center)
             }
-            .padding()
+            .padding(padding)
             .frame(maxWidth: .infinity)
             .frame(height: 35)
             .foregroundColor(.white)
@@ -371,15 +379,15 @@ struct PostView: View {
         }
         .zIndex(-1)
         .frame(maxWidth: .infinity)
-        .padding(16)
-        .background(.regularMaterial)
+        .padding(padding)
+        .background(.ultraThinMaterial)
         .overlay(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(Color(.systemGray5), lineWidth: 2)
         )
         .clipShape(RoundedRectangle(cornerRadius: 16))
-        .padding(.horizontal, 16)
-        .padding(.bottom, 12)
+        .padding(.horizontal, padding)
+        .padding(.bottom, padding)
         .transition(.move(edge: .top))
     }
 
