@@ -29,12 +29,12 @@ private extension WelcomeView.Content {
 	@ViewBuilder
     var body: some View {
 		VStack {
-			if viewStore.completedAnimations.contains(.logo) {
+            if viewStore.completedAnimations.contains(.logo) {
                 Logo()
                     .transition(.opacity)
                     .zIndex(100)
                     .background(Color.white)
-			}
+            }
 
             if viewStore.completedAnimations.contains(.logo) &&
                 !viewStore.completedAnimations.contains(.showContent) {

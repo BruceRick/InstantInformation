@@ -35,6 +35,13 @@
 		4BBF9267298D7AF600F31472 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9266298D7AF600F31472 /* NetworkClient.swift */; };
 		4BBF9269298D8C0100F31472 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9268298D8C0100F31472 /* MainNavigation.swift */; };
 		4BBF926B298D8C1000F31472 /* MainNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF926A298D8C1000F31472 /* MainNavigationView.swift */; };
+		4BBF9270298D946D00F31472 /* NavigationHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF926F298D946D00F31472 /* NavigationHeader.swift */; };
+		4BBF9272298D947800F31472 /* NavigationHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9271298D947800F31472 /* NavigationHeaderView.swift */; };
+		4BBF9274298D948500F31472 /* NavigationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9273298D948500F31472 /* NavigationFooter.swift */; };
+		4BBF9276298D949E00F31472 /* NavigationFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9275298D949E00F31472 /* NavigationFooterView.swift */; };
+		4BBF9278298D94AC00F31472 /* TimelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9277298D94AC00F31472 /* TimelineView.swift */; };
+		4BBF927A298D94B600F31472 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF9279298D94B600F31472 /* Timeline.swift */; };
+		4BBF927D298DA56800F31472 /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBF927C298DA56800F31472 /* PostView.swift */; };
 		4BC040D2298B2ABF00994366 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 4BC040D1298B2ABF00994366 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +95,13 @@
 		4BBF9266298D7AF600F31472 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
 		4BBF9268298D8C0100F31472 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
 		4BBF926A298D8C1000F31472 /* MainNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationView.swift; sourceTree = "<group>"; };
+		4BBF926F298D946D00F31472 /* NavigationHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeader.swift; sourceTree = "<group>"; };
+		4BBF9271298D947800F31472 /* NavigationHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationHeaderView.swift; sourceTree = "<group>"; };
+		4BBF9273298D948500F31472 /* NavigationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFooter.swift; sourceTree = "<group>"; };
+		4BBF9275298D949E00F31472 /* NavigationFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationFooterView.swift; sourceTree = "<group>"; };
+		4BBF9277298D94AC00F31472 /* TimelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineView.swift; sourceTree = "<group>"; };
+		4BBF9279298D94B600F31472 /* Timeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timeline.swift; sourceTree = "<group>"; };
+		4BBF927C298DA56800F31472 /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +146,7 @@
 				4B225EED298B406C007EE635 /* RootView.swift */,
 				4B225EF2298B4508007EE635 /* Welcome */,
 				4B225EF3298B4516007EE635 /* Main */,
+				4BBF9248298C405100F31472 /* Generic */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,7 +176,10 @@
 			children = (
 				4BBF9268298D8C0100F31472 /* MainNavigation.swift */,
 				4BBF926A298D8C1000F31472 /* MainNavigationView.swift */,
-				4BBF9248298C405100F31472 /* Generic */,
+				4BBF926C298D940100F31472 /* NavigationHeader */,
+				4BBF926D298D941A00F31472 /* NavigationFooter */,
+				4BBF926E298D945200F31472 /* Timeline */,
+				4BBF927B298DA54900F31472 /* Post */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -306,6 +324,41 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		4BBF926C298D940100F31472 /* NavigationHeader */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF926F298D946D00F31472 /* NavigationHeader.swift */,
+				4BBF9271298D947800F31472 /* NavigationHeaderView.swift */,
+			);
+			path = NavigationHeader;
+			sourceTree = "<group>";
+		};
+		4BBF926D298D941A00F31472 /* NavigationFooter */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9273298D948500F31472 /* NavigationFooter.swift */,
+				4BBF9275298D949E00F31472 /* NavigationFooterView.swift */,
+			);
+			path = NavigationFooter;
+			sourceTree = "<group>";
+		};
+		4BBF926E298D945200F31472 /* Timeline */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF9279298D94B600F31472 /* Timeline.swift */,
+				4BBF9277298D94AC00F31472 /* TimelineView.swift */,
+			);
+			path = Timeline;
+			sourceTree = "<group>";
+		};
+		4BBF927B298DA54900F31472 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				4BBF927C298DA56800F31472 /* PostView.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -444,18 +497,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BBF927A298D94B600F31472 /* Timeline.swift in Sources */,
 				4BA77F0A29602D2500C8093A /* InstantInformationApp.swift in Sources */,
 				4BBF926B298D8C1000F31472 /* MainNavigationView.swift in Sources */,
+				4BBF9270298D946D00F31472 /* NavigationHeader.swift in Sources */,
 				4B225EEC298B3FD8007EE635 /* Root.swift in Sources */,
 				4BBF9255298C5FFC00F31472 /* DatabaseClient.swift in Sources */,
+				4BBF9276298D949E00F31472 /* NavigationFooterView.swift in Sources */,
 				4B225EEE298B406C007EE635 /* RootView.swift in Sources */,
 				4BBF9269298D8C0100F31472 /* MainNavigation.swift in Sources */,
 				4BBF9258298D6C0C00F31472 /* Endpoint.swift in Sources */,
 				4BBF9243298C129C00F31472 /* TextInput.swift in Sources */,
 				4B225EF7298B47BA007EE635 /* LoginView.swift in Sources */,
 				4B225EF9298B47D6007EE635 /* Welcome.swift in Sources */,
+				4BBF9272298D947800F31472 /* NavigationHeaderView.swift in Sources */,
 				4BBF9267298D7AF600F31472 /* NetworkClient.swift in Sources */,
 				4BBF9265298D7AC300F31472 /* User.swift in Sources */,
+				4BBF9278298D94AC00F31472 /* TimelineView.swift in Sources */,
 				4BBF923F298C0C5100F31472 /* CreateAccountView.swift in Sources */,
 				4BBF9247298C261500F31472 /* ViewSynchronize.swift in Sources */,
 				4BBF9263298D76B100F31472 /* MockAPI.swift in Sources */,
@@ -467,6 +525,8 @@
 				4BBF925A298D6FE700F31472 /* API.swift in Sources */,
 				4BBF925D298D73FA00F31472 /* Authentication.swift in Sources */,
 				4BBF9253298C5B0800F31472 /* Database.swift in Sources */,
+				4BBF927D298DA56800F31472 /* PostView.swift in Sources */,
+				4BBF9274298D948500F31472 /* NavigationFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

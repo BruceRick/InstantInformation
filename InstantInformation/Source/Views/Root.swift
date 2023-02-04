@@ -12,7 +12,7 @@ struct Root: ReducerProtocol {
         var welcome = Welcome.State()
         var mainNavigation = MainNavigation.State()
 
-        var showNavigation = false
+        var user: User?
     }
 
     enum Action {
@@ -21,14 +21,17 @@ struct Root: ReducerProtocol {
         case mainNavigation(MainNavigation.Action)
     }
 
+    @Dependency(\.database) var database
+
     var body: some ReducerProtocol<State, Action> {
         Reduce { state, action in
             switch action {
             case .onAppear:
+                state.user = database.getUser()
                 return .none
 
-            case .welcome(.complete):
-                state.showNavigation = true
+            case .welcome(.complete(let user)):
+                state.user = user
                 return .none
 
             case .mainNavigation:

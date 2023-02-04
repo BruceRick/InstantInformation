@@ -39,7 +39,7 @@ struct Welcome: ReducerProtocol {
         case registerResponse(TaskResult<(data: Authentication, response: URLResponse)>)
         case userResponse(TaskResult<(data: User, response: URLResponse)>)
 
-        case complete
+        case complete(User)
 
         case login(Login.Action)
         case createAccount(CreateAccount.Action)
@@ -176,7 +176,7 @@ struct Welcome: ReducerProtocol {
             case .userResponse(.success((let data, _))):
                 state.loading = false
                 database.storeUser(data)
-                return .init(value: .complete)
+                return .init(value: .complete(data))
 
             case .userResponse(.failure):
                 state.loading = false

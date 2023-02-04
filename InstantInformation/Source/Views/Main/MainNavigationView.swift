@@ -5,8 +5,6 @@
 //  Created by Bruce Rick on 2023-02-03.
 //
 
-import Foundation
-
 import ComposableArchitecture
 import SwiftUI
 
@@ -15,20 +13,55 @@ struct MainNavigationView: View {
 
     var body: some View {
         WithViewStore(self.store, observe: { $0 }) { viewStore in
-            Content(store: viewStore)
+            Content(store: store, viewStore: viewStore)
         }
     }
 }
 
 private extension MainNavigationView {
     struct Content: View {
-        let store: ViewStoreOf<MainNavigation>
+        let store: StoreOf<MainNavigation>
+        let viewStore: ViewStoreOf<MainNavigation>
     }
 }
 
 private extension MainNavigationView.Content {
     @ViewBuilder
     var body: some View {
-        Text("Main Navigation")
+        ZStack {
+            TimelineView(store: self.store.scope(
+                state: \.timeline,
+                action: MainNavigation.Action.timeline
+            ))
+
+            statusBarBackground
+
+//            NavigationFooterView(store: self.store.scope(
+//                state: \.navigationFooter,
+//                action: MainNavigation.Action.navigationFooter
+//            )).frame(alignment: .bottom)
+        }.overlay {
+//            NavigationHeaderView(store: self.store.scope(
+//                state: \.navigationHeader,
+//                action: MainNavigation.Action.navigationHeader
+//            )).frame(alignment: .top)
+        }
+    }
+
+    var statusBarBackground: some View {
+        ZStack {
+            VStack {
+                GeometryReader { geometry in
+                    Rectangle()
+                        .fill(.ultraThinMaterial)
+                        .frame(height: geometry.safeAreaInsets.top)
+                        .edgesIgnoringSafeArea(.top)
+                    Rectangle()
+                        .fill(Color(.systemGray5))
+                        .frame(height: 1)
+                    Spacer()
+                }
+            }
+        }
     }
 }
