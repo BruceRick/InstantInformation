@@ -24,7 +24,7 @@ struct Welcome: ReducerProtocol {
         var loading = false
     }
 
-    enum Action {
+    enum Action: BindableAction {
         case onAppear
 		case animate(AnimationStep)
 		case stepCompleted(AnimationStep)
@@ -43,6 +43,8 @@ struct Welcome: ReducerProtocol {
 
         case login(Login.Action)
         case createAccount(CreateAccount.Action)
+
+        case binding(BindingAction<State>)
     }
 
     enum AnimationStep: CaseIterable {
@@ -66,6 +68,7 @@ struct Welcome: ReducerProtocol {
     enum UserCancelID {}
 
     var body: some ReducerProtocol<State, Action> {
+        BindingReducer()
         Reduce { state, action in
             switch action {
             case .onAppear:
@@ -190,7 +193,18 @@ struct Welcome: ReducerProtocol {
 
             case .createAccount:
                 return .none
+
+            case .binding:
+                return .none
             }
+        }
+
+        Scope(state: \.login, action: /Action.login) {
+            Login()
+        }
+
+        Scope(state: \.createAccount, action: /Action.createAccount) {
+            CreateAccount()
         }
     }
 }

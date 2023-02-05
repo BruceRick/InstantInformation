@@ -12,20 +12,32 @@ struct TextInput: View {
     let text: Binding<String>
     var isSecure: Bool = false
     @State private var showPassword: Bool = false
+    @FocusState private var focused: Bool
 
     var body: some View {
-        Group {
-            Text(text.wrappedValue.isEmpty ? " " : placeHolder)
-                .font(.footnote)
-                .foregroundColor(Color.gray)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.top, 10)
+        ZStack(alignment: .topLeading) {
             textFieldContainer
                 .font(.subheadline)
-            Rectangle()
-                .fill(Color(.systemGray4))
-                .frame(height: 1)
-                .frame(maxWidth: .infinity)
+                .frame(height: 44)
+                .padding(.horizontal, 14)
+                .background(.clear)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(focused ? .blue : Color(.systemGray3), lineWidth: focused ? 4 : 2)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .padding(.top, 7)
+            if !text.wrappedValue.isEmpty {
+                Text(placeHolder)
+                    .font(.caption)
+                    .fontWeight(.regular)
+                    .foregroundColor(focused ? .blue : .gray)
+                    .padding(.horizontal, 4)
+                    .background(.ultraThickMaterial)
+                    .padding(.leading, 10)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
         }
         .animation(.default, value: text.wrappedValue)
     }
@@ -34,8 +46,10 @@ struct TextInput: View {
     var textField: some View {
         if isSecure && !showPassword {
             SecureField(placeHolder, text: text)
+                .focused($focused)
         } else {
             TextField(placeHolder, text: text)
+                .focused($focused)
         }
 }
 
@@ -43,6 +57,8 @@ struct TextInput: View {
         ZStack(alignment: .trailing) {
             textField
                 .padding(.trailing, 32)
+                .fontWeight(.medium)
+                .foregroundColor(focused ? .blue : .gray)
                 .frame(maxWidth: .infinity)
             if isSecure {
                 Button(action: {

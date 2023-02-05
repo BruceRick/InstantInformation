@@ -27,9 +27,10 @@ private extension CreateAccountView {
 private extension CreateAccountView.Content {
 	@ViewBuilder
 	var body: some View {
-        VStack {
-            Text("Create your account")
+        VStack(spacing: 20) {
+            Text("Create Your Account")
                 .fontWeight(.bold)
+                .foregroundColor(.gray)
             TextInput(placeHolder: "Email", text: store.binding(\.$email))
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
@@ -40,7 +41,6 @@ private extension CreateAccountView.Content {
             TextInput(placeHolder: "Confirm Password", text: store.binding(\.$confirmPassword), isSecure: true)
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 40)
 	}
 }
 

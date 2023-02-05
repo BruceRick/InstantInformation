@@ -14,6 +14,6 @@ struct Logo: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: 100, height: 100)
             .padding(.top, 20)
-            .padding(.bottom, 20)
+            .padding(.bottom, 30)
     }
 }

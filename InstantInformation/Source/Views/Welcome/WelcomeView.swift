@@ -28,12 +28,11 @@ private extension WelcomeView {
 private extension WelcomeView.Content {
 	@ViewBuilder
     var body: some View {
-		VStack {
+        VStack(spacing: 0) {
             if viewStore.completedAnimations.contains(.logo) {
                 Logo()
                     .transition(.opacity)
                     .zIndex(100)
-                    .background(Color.white)
             }
 
             if viewStore.completedAnimations.contains(.logo) &&
@@ -50,6 +49,7 @@ private extension WelcomeView.Content {
 			}
 		}
         .onAppear { viewStore.send(.onAppear) }
+        .padding(.horizontal, 20)
         .overlay {
             if viewStore.loading {
                 ZStack(alignment: .center) {
@@ -71,6 +71,7 @@ private extension WelcomeView.Content {
 			.fontWeight(.bold)
 			.frame(maxWidth: .infinity, alignment: .trailing)
 			.transition(.opacity)
+            .foregroundColor(.gray)
 	}
 
 	var items: some View {
@@ -80,6 +81,7 @@ private extension WelcomeView.Content {
 					.fontWeight(.bold)
 					.zIndex(Double(-index))
 					.frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundColor(.gray)
 					.background(Color.white)
 			}
 		}
@@ -88,6 +90,8 @@ private extension WelcomeView.Content {
 
 	var switchContentText: some View {
 		Text(switchContentString)
+            .fontWeight(.medium)
+            .foregroundColor(.gray)
 	}
 
 	var switchContentButton: some View {
@@ -105,10 +109,10 @@ private extension WelcomeView.Content {
 			}.frame(maxWidth: .infinity)
 		}
 		.padding()
-		.foregroundColor(.black)
+		.foregroundColor(.blue)
 		.overlay(
 			RoundedRectangle(cornerRadius: 26)
-				.stroke(.black, lineWidth: 2)
+				.stroke(.blue, lineWidth: 2)
 		)
 		.padding()
 		.transition(.opacity)
@@ -126,7 +130,7 @@ private extension WelcomeView.Content {
 		.padding()
 		.frame(maxWidth: .infinity)
 		.foregroundColor(.white)
-		.background(Color.black)
+		.background(Color.blue)
 		.clipShape(Capsule())
 		.padding()
 		.transition(.opacity)
@@ -139,11 +143,25 @@ private extension WelcomeView.Content {
                 state: \.login,
                 action: Welcome.Action.login
             ))
+            .padding(20)
+            .background(.ultraThinMaterial)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color(.systemGray5), lineWidth: 2)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16))
         } else {
             CreateAccountView(store: store.scope(
                 state: \.createAccount,
                 action: Welcome.Action.createAccount
             ))
+            .padding(20)
+            .background(.ultraThinMaterial)
+            .overlay(
+                RoundedRectangle(cornerRadius: 16)
+                    .stroke(Color(.systemGray5), lineWidth: 2)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 16))
         }
         Spacer()
         actionButton

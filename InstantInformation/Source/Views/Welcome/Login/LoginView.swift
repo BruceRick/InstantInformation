@@ -27,15 +27,15 @@ private extension LoginView {
 private extension LoginView.Content {
 	@ViewBuilder
 	var body: some View {
-        VStack {
+        VStack(spacing: 10) {
             Text("Login")
                 .fontWeight(.bold)
+                .foregroundColor(.gray)
             TextInput(placeHolder: "Username", text: store.binding(\.$username))
                 .textInputAutocapitalization(.never)
                 .autocorrectionDisabled()
             TextInput(placeHolder: "Password", text: store.binding(\.$password), isSecure: true)
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 40)
 	}
 }
