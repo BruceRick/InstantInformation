@@ -13,14 +13,14 @@ public struct DatabaseClient {
     public var getDidShowInitialAnimation: () -> Bool
     public var setDidShowInitialAnimation: (Bool) -> Void
     public var storeAuthentication: (Authentication) -> Void
-    public var storeUser: (User) -> Void
+    public var storeUser: (User?) -> Void
     public var getUser: () -> User?
 
     public init(
         getDidShowInitialAnimation: @escaping () -> Bool,
         setDidShowInitialAnimation: @escaping (Bool) -> Void,
         storeAuthentication: @escaping (Authentication) -> Void,
-        storeUser: @escaping (User) -> Void,
+        storeUser: @escaping (User?) -> Void,
         getUser: @escaping () -> User?
     ) {
         self.getDidShowInitialAnimation = getDidShowInitialAnimation

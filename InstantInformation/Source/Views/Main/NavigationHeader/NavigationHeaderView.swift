@@ -110,9 +110,11 @@ private extension NavigationHeaderView.Content {
                                     timelineButton(timeline: timeline)
                                 }
                             }
+                            horizontalSeparator
+                            createNewTimelineButton
                         }
                     }
-                    .background(.thinMaterial)
+                    .background(.thickMaterial)
                     .overlay(
                         RoundedRectangle(cornerRadius: 22)
                             .stroke(Color(.systemGray4), lineWidth: 2)
@@ -136,7 +138,7 @@ private extension NavigationHeaderView.Content {
                         }
                     }
                     .frame(width: 130)
-                    .background(.thinMaterial)
+                    .background(.thickMaterial)
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .stroke(Color(.systemGray4), lineWidth: 2)
@@ -193,7 +195,6 @@ private extension NavigationHeaderView.Content {
         .clipShape(RoundedRectangle(cornerRadius: 25))
         .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
         .padding(.trailing, 10)
-        .padding(.top, 2)
     }
 
     func contentMenuButton(content: ContentType) -> some View {
@@ -215,7 +216,22 @@ private extension NavigationHeaderView.Content {
         }
         .foregroundColor(selectedContent == content ? .blue : .gray)
         .frame(alignment: .trailing)
+        .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 5)
         .transition(.opacity)
+    }
+
+    var createNewTimelineButton: some View {
+        Button { } label: {
+            Text("+ Create New Timeline")
+                .fontWeight(.medium)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .frame(height: 44)
+                .padding(.horizontal, 20)
+        }
+        .foregroundColor(.blue)
+        .transition(.opacity)
+        .frame(maxWidth: .infinity)
     }
 
     var horizontalSeparator: some View {

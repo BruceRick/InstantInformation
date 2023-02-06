@@ -179,7 +179,10 @@ struct Welcome: ReducerProtocol {
             case .userResponse(.success((let data, _))):
                 state.loading = false
                 database.storeUser(data)
-                return .init(value: .complete(data))
+                return .run { send in
+                    await send(.complete(data), animation: .default)
+                }
+                .cancellable(id: CancelID.self)
 
             case .userResponse(.failure):
                 state.loading = false

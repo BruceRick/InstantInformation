@@ -29,24 +29,65 @@ private extension MainNavigationView.Content {
     @ViewBuilder
     var body: some View {
         ZStack {
-            TimelineView(store: self.store.scope(
-                state: \.timeline,
-                action: MainNavigation.Action.timeline
-            ))
+            switch viewStore.navigationFooter.selectedTab {
+            case .home:
+                TimelineView(store: self.store.scope(
+                    state: \.timeline,
+                    action: MainNavigation.Action.timeline
+                ))
+            case .search:
+                VStack {
+                    Spacer()
+                    Text("Search")
+                    Spacer()
+                }
+                .background(.white)
+                .frame(maxWidth: .infinity)
+                .transition(.move(edge: .leading))
+            case .mentions:
+                VStack {
+                    Spacer()
+                    Text("Mentions")
+                    Spacer()
+                }
+                .background(.white)
+                .frame(maxWidth: .infinity)
+                .transition(.move(edge: .leading))
+            case .messages:
+                VStack {
+                    Spacer()
+                    Text("Messages")
+                    Spacer()
+                }
+                .background(.white)
+                .padding(.top, 10)
+                .frame(maxWidth: .infinity)
+                .transition(.move(edge: .leading))
+            case .more:
+                MoreView(store: self.store.scope(
+                    state: \.more,
+                    action: MainNavigation.Action.more
+                ))
+                .transition(.move(edge: .leading))
+            }
 
             statusBarBackground
         }
         .overlay(alignment: .top) {
-            NavigationHeaderView(store: self.store.scope(
-                state: \.navigationHeader,
-                action: MainNavigation.Action.navigationHeader
-            ))
+            if viewStore.showHeader {
+                NavigationHeaderView(store: self.store.scope(
+                    state: \.navigationHeader,
+                    action: MainNavigation.Action.navigationHeader
+                ))
+            }
         }
         .overlay(alignment: .bottom) {
-            NavigationFooterView(store: self.store.scope(
-                state: \.navigationFooter,
-                action: MainNavigation.Action.navigationFooter
-            ))
+            if viewStore.showFooter {
+                NavigationFooterView(store: self.store.scope(
+                    state: \.navigationFooter,
+                    action: MainNavigation.Action.navigationFooter
+                ))
+            }
         }
     }
 

@@ -10,13 +10,20 @@ import SwiftUI
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 struct PostView: View {
+    var postSelected: (UUID) -> Void
+    var replySelected: (UUID) -> Void
+
+    var id: UUID
+
     var profileImage: String
     var name: String
     var username: String
     var feed: String
-    var text: String
+    var image: String?
+    var text: String?
+    var replyText: String?
 
-    let isVerfied = true
+    let isVerified: Bool
     @State var liked = false
     @State var reposted = false
     @State var menu: Menu?
@@ -154,9 +161,12 @@ struct PostView: View {
                         .resizable()
                         .frame(width: 42, height: 42)
                         .aspectRatio(contentMode: .fit)
-                        .clipShape(Capsule())
-                        .padding(.leading, padding)
-                        .padding(.trailing, padding)
+                        .clipShape(Circle())
+                        .overlay(
+                            Circle()
+                                .stroke(Color(.systemGray3), lineWidth: 2)
+                        )
+                        .padding(padding)
                         .padding(.top, 2)
                     VStack(alignment: .leading) {
                         HStack(alignment: .center, spacing: 0) {
@@ -165,17 +175,37 @@ struct PostView: View {
                                 .foregroundColor(.gray)
                                 .font(.body)
                                 .lineLimit(1)
-                            Image(systemName: "checkmark.shield.fill")
-                                .font(.system(size: 14))
-                                .foregroundColor(.blue)
-                                .padding(.leading, 2)
+
+                            if isVerified {
+                                Image(systemName: "checkmark.shield.fill")
+                                    .font(.system(size: 14))
+                                    .foregroundColor(.blue)
+                                    .padding(.leading, 2)
+                            }
+
+                            if replyText != nil {
+                                Text(" ii.\(username)")
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(1)
+                            }
                         }
                         HStack(alignment: .center, spacing: 0) {
-                            Text("ii.\(username)/\(feed)")
-                                .font(.subheadline)
-                                .fontWeight(.medium)
-                                .foregroundColor(.gray)
-                                .lineLimit(1)
+                            if let replyText {
+                                Text("Replying to ii.\(replyText)")
+                                    .foregroundColor(.blue)
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                                    .lineLimit(1)
+                            } else {
+                                Text("ii.\(username) / \(feed)")
+                                    .font(.subheadline)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.gray)
+                                    .lineLimit(1)
+                            }
+
                             Text(" • 55m")
                                 .font(.subheadline)
                                 .fontWeight(.medium)
@@ -201,12 +231,38 @@ struct PostView: View {
                     .background(.clear)
                 }.fixedSize(horizontal: false, vertical: true)
                 horizontalSeparator
-                Text(text)
-                    .font(.subheadline)
-                    .fontWeight(.regular)
-                    .foregroundColor(.gray)
-                    .padding(padding)
-                    .fixedSize(horizontal: false, vertical: true)
+
+                if let text {
+                    Text(text)
+                        .font(.subheadline)
+                        .fontWeight(.regular)
+                        .foregroundColor(.gray)
+                        .padding(padding)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .onTapGesture {
+                            withAnimation {
+                                menu = nil
+                            }
+                            postSelected(id)
+                        }
+                }
+
+                if let image {
+                    Image(image)
+                        .resizable()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color(.systemGray5), lineWidth: 2)
+                        )
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                        .scaledToFill()
+                        .aspectRatio(16/9, contentMode: .fill)
+                        .padding(.bottom, 10)
+                        .padding(.horizontal, 10)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .clipped()
+                }
+
                 horizontalSeparator
                 actionView
                     .fixedSize(horizontal: false, vertical: true)
@@ -258,6 +314,7 @@ struct PostView: View {
                          selectedColor: menu == .replying ? menu?.color : nil) {
                 withAnimation {
                     menu = menu == .replying ? nil : .replying
+                    replySelected(id)
                 }
             }
             verticalSeparator
@@ -317,14 +374,14 @@ struct PostView: View {
     var replyView: some View {
         VStack(alignment: .leading, spacing: 10) {
             HStack(alignment: .center, spacing: 0) {
-                Image(profileImage)
+                Image("profile")
                     .resizable()
                     .frame(width: 30, height: 30)
                     .aspectRatio(contentMode: .fit)
                     .clipShape(Capsule())
                 VStack(alignment: .leading) {
                     HStack(spacing: 0) {
-                        Text("\(name)")
+                        Text("Bruce Rick")
                             .fontWeight(.bold)
                             .font(.subheadline)
                             .foregroundColor(.gray)
@@ -334,7 +391,7 @@ struct PostView: View {
                             .foregroundColor(.blue)
                             .padding(.leading, 2)
                     }
-                    Text("ii.\(username)/\(feed)")
+                    Text("ii.brick")
                         .font(.caption)
                         .fontWeight(.medium)
                         .foregroundColor(.gray)
@@ -431,7 +488,10 @@ struct PostView: View {
 struct PostView_Previews: PreviewProvider {
   static var previews: some View {
       VStack(spacing: 10) {
-          PostView(profileImage: "profile",
+          PostView(postSelected: { _ in },
+                   replySelected: { _ in },
+                   id: UUID(),
+                   profileImage: "profile",
                    name: "Bruce Rick",
                    username: "brick",
                    feed: "all",
@@ -441,9 +501,13 @@ struct PostView_Previews: PreviewProvider {
                 experiment with SwiftUI animations. Also checked out the latest features with \
                 SwiftComposableArchitecture. Really enjoyed my experiences and learned \
                 a heck of a lot!!!
-                """
+                """,
+                   isVerified: true
           ).padding(.horizontal, 10)
-          PostView(profileImage: "profile",
+          PostView(postSelected: { _ in },
+                   replySelected: { _ in },
+                   id: UUID(),
+                   profileImage: "profile",
                    name: "Bruce Rick",
                    username: "brick",
                    feed: "BreakingNews",
@@ -454,10 +518,15 @@ struct PostView_Previews: PreviewProvider {
                 SwiftComposableArchitecture. Really enjoyed my experiences and learned
                 a heck of a lot!!!
                 """,
+                   replyText: "theScore",
+                   isVerified: false,
                    liked: true,
                    reposted: true
           ).padding(.horizontal, 10)
-          PostView(profileImage: "profile",
+          PostView(postSelected: { _ in },
+                   replySelected: { _ in },
+                   id: UUID(),
+                   profileImage: "profile",
                    name: "Jonathon Alexander McDonald",
                    username: "jonathonmcdonald",
                    feed: "breakingNews",
@@ -467,7 +536,8 @@ struct PostView_Previews: PreviewProvider {
                 experiment with SwiftUI animations. Also checked out the latest features with \
                 SwiftComposableArchitecture. Really enjoyed my experiences and learned
                 a heck of a lot!!!
-                """
+                """,
+                   isVerified: true
           ).padding(.horizontal, 16)
       }
   }

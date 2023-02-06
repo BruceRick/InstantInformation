@@ -23,12 +23,12 @@ struct RootView: View {
                     MainNavigationView(store: self.store.scope(
                         state: \.mainNavigation,
                         action: Root.Action.mainNavigation
-                    ))
+                    )).transition(.move(edge: .leading))
                 } else {
                     WelcomeView(store: self.store.scope(
                         state: \.welcome,
                         action: Root.Action.welcome
-                    ))
+                    )).transition(.move(edge: .top))
                 }
             }.onAppear { viewStore.send(.onAppear) }
         }

@@ -34,6 +34,10 @@ struct Root: ReducerProtocol {
                 state.user = user
                 return .none
 
+            case .mainNavigation(.more(.selectMenuItem(.logout))):
+                state.user = nil
+                return .none
+
             case .mainNavigation:
                 return .none
 

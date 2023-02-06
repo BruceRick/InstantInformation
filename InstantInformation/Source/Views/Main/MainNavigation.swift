@@ -9,23 +9,45 @@ import ComposableArchitecture
 
 struct MainNavigation: ReducerProtocol {
     struct State: Equatable {
-        let navigationHeader = NavigationHeader.State()
-        let navigationFooter = NavigationFooter.State()
-        let timeline = Timeline.State()
+        var navigationHeader = NavigationHeader.State()
+        var navigationFooter = NavigationFooter.State()
+        var timeline = Timeline.State()
+        var more = More.State()
+
+        var showHeader = true
+        var showFooter = true
     }
 
     enum Action {
-        case onAppear
-
         case navigationHeader(NavigationHeader.Action)
         case navigationFooter(NavigationFooter.Action)
         case timeline(Timeline.Action)
+        case more(More.Action)
     }
 
     var body: some ReducerProtocol<State, Action> {
-        Reduce { _, action in
+        Reduce { state, action in
             switch action {
-            case .onAppear:
+            case .navigationFooter(.selectTab(let tab)):
+                state.showHeader = tab == .home
+                state.navigationFooter.showNewPost = tab == .home
+                return .none
+
+            case .more(.selectMenuItem(.logout)):
+                return .init(value: .navigationFooter(.selectTab(.home)))
+
+            case .timeline(.replyingToPost(let id)):
+                state.showHeader = id == state.timeline.postReplying
+                state.showFooter = id == state.timeline.postReplying
+                state.timeline.headerShowing = state.showHeader
+                state.timeline.footerShowing = state.showFooter
+                return .none
+
+            case .timeline(.postSelected(let id)):
+                state.showHeader = id == state.timeline.postSelected
+                state.showFooter = id == state.timeline.postSelected
+                state.timeline.headerShowing = state.showHeader
+                state.timeline.footerShowing = state.showFooter
                 return .none
 
             case .navigationHeader:
@@ -36,7 +58,26 @@ struct MainNavigation: ReducerProtocol {
 
             case .timeline:
                 return .none
+
+            default:
+                return .none
             }
+        }
+
+        Scope(state: \.navigationHeader, action: /Action.navigationHeader) {
+            NavigationHeader()
+        }
+
+        Scope(state: \.navigationFooter, action: /Action.navigationFooter) {
+            NavigationFooter()
+        }
+
+        Scope(state: \.timeline, action: /Action.timeline) {
+            Timeline()
+        }
+
+        Scope(state: \.more, action: /Action.more) {
+            More()
         }
     }
 }
